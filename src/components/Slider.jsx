@@ -71,7 +71,7 @@ const Desc = styled.p`
 const Button = styled.button`
   padding: 10px;
   font-size: 20px;
-  background-color: transparent;
+  background-color: pink;
   cursor: pointer;
   border-radius: 20%;
 `;
@@ -94,7 +94,7 @@ const Slider = () => {
         </Arrow>
         <Wrapper slideIndex={slideIndex}>
           {sliderItems.map((item) => (
-            <Slide bg = {item.bg}>
+            <Slide bg = {item.bg} key={item.id} >
               <ImgContainer>
                   <Image src={item.img} />
               </ImgContainer>
