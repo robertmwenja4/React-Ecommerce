@@ -7,11 +7,15 @@ import Newsletter from '../components/Newsletter'
 import Products from '../components/Products'
 import Slider from '../components/Slider'
 
+const handleClick = () => {
+  console.log("Button Clicked")
+}
+
 const Home = () => {
   return (
     <div>
       <Announcement/>
-        <NavBar />
+        <NavBar onClickMe = { this.handleClick } />
         <Slider />
         <Categories />
         <Products />
