@@ -1,4 +1,11 @@
+import { Add, Remove } from '@material-ui/icons';
 import React from 'react'
+import styled from 'styled-components';
+import Announcement from '../components/Announcement';
+import Footer from '../components/Footer';
+import NavBar from '../components/NavBar';
+import Newsletter from '../components/Newsletter';
+import { mobile } from '../responsive';
 
 
 const Container = styled.div``;
@@ -113,7 +120,7 @@ const Button = styled.button`
 const Product = () => {
   return (
     <Container>
-      <Navbar />
+      <NavBar />
       <Announcement />
       <Wrapper>
         <ImgContainer>
