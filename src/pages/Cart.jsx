@@ -1,4 +1,10 @@
 import React from 'react'
+import { Add, Remove } from "@material-ui/icons";
+import Announcement from "../components/Announcement";
+import Footer from "../components/Footer";
+import Navbar from "../components/NavBar";
+import { mobile } from "../responsive";
+import styled from 'styled-components';
 
 const Container = styled.div``;
 

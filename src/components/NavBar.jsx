@@ -56,7 +56,6 @@ const MenuItem = styled.div`
 
 
 const NavBar = () => {
-  const { onClickMe } = this.props;
   return (
     <Container>
       <Wrapper>
@@ -69,7 +68,7 @@ const NavBar = () => {
         </Left>
         <Center><Logo>SHOPIFY COLLECTIONS</Logo></Center>
         <Right>
-          <MenuItem onClick = { onClickMe }>REGISTER</MenuItem>
+          <MenuItem>REGISTER</MenuItem>
           <MenuItem>SIGN IN</MenuItem>
           <MenuItem>
           <Badge badgeContent={4} color="primary">
