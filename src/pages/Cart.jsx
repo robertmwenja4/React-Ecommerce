@@ -7,7 +7,7 @@
   import styled from 'styled-components';
   import { useSelector } from 'react-redux';
   import { publicRequest } from '../requestMethod';
-import axios from 'axios';
+import axios, { Axios } from 'axios';
 
   const Container = styled.div``;
 
@@ -159,22 +159,16 @@ import axios from 'axios';
   `;
 
   const Cart = () => {
-
     const cart = useSelector(state => state.cart);
     console.log(cart);
-    const handleMpesa = async () => {
-      let phoneNumber = "254719189576"
-      try {
-        let res = await axios.post("http://localhost:5000/api/mpesa/stk", {
-          method: "POST",
-          body: JSON.stringify({
-            Amount: "1",
-            PhoneNumber: phoneNumber,
-        }),
-      });
-      } catch (err) {
-        console.log(err);
-      }
+    const handleMpesa =  (e) => {
+      e.preventDefault();
+      let phoneNumber = "254719189576";
+        axios.get('http://localhost:5000/api/mpesa/stk',{
+          Amount: "1",
+          PhoneNumber: "254725207763"
+        }).then((res) =>console.log(res.data))
+        .catch((err) => console.log(err))
     }
 
     return (
