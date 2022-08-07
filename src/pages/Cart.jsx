@@ -1,4 +1,4 @@
-  import React from 'react'
+  import React, { useState } from 'react'
   import { Add, Remove } from "@material-ui/icons";
   import Announcement from "../components/Announcement";
   import Footer from "../components/Footer";
@@ -8,6 +8,8 @@
   import { useSelector } from 'react-redux';
   import { publicRequest } from '../requestMethod';
 import axios, { Axios } from 'axios';
+import { Modal } from 'react-bootstrap';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
   const Container = styled.div``;
 
@@ -160,6 +162,9 @@ import axios, { Axios } from 'axios';
 
   const Cart = () => {
     const cart = useSelector(state => state.cart);
+    const [show, setShow] = useState(false);
+    const handleClose = () => setShow(false);
+    const handleShow = () => setShow(true);
     console.log(cart);
     const handleMpesa =  (e) => {
       e.preventDefault();
@@ -235,6 +240,24 @@ import axios, { Axios } from 'axios';
                 <SummaryItemPrice>Ksh {cart.total}</SummaryItemPrice>
               </SummaryItem>
               <Button onClick={handleMpesa}>CHECKOUT NOW</Button>
+              <p>.............................................</p>
+              <Button variant="danger" onClick={handleShow}>
+                CLICK MODAL
+              </Button>
+              <Modal show={show} onHide={handleClose}>
+                <Modal.Header closeButton>
+                  <Modal.Title>Modal heading</Modal.Title>
+                </Modal.Header>
+                <Modal.Body>Hello,you're reading this text in a modal!</Modal.Body>
+                <Modal.Footer>
+                  <Button variant="secondary" onClick={handleClose}>
+                    Close
+                  </Button>
+                  <Button variant="primary" onClick={handleClose}>
+                    Save Changes
+                  </Button>
+                </Modal.Footer>
+              </Modal>
             </Summary>
           </Bottom>
         </Wrapper>
