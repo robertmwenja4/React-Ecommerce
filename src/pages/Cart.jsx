@@ -6,7 +6,6 @@
   import { mobile } from "../responsive";
   import styled from 'styled-components';
   import { useSelector } from 'react-redux';
-  import { publicRequest } from '../requestMethod';
 import axios, { Axios } from 'axios';
 import { Modal } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -240,24 +239,6 @@ import 'bootstrap/dist/css/bootstrap.min.css';
                 <SummaryItemPrice>Ksh {cart.total}</SummaryItemPrice>
               </SummaryItem>
               <Button onClick={handleMpesa}>CHECKOUT NOW</Button>
-              <p>.............................................</p>
-              <Button variant="danger" onClick={handleShow}>
-                CLICK MODAL
-              </Button>
-              <Modal show={show} onHide={handleClose}>
-                <Modal.Header closeButton>
-                  <Modal.Title>Modal heading</Modal.Title>
-                </Modal.Header>
-                <Modal.Body>Hello,you're reading this text in a modal!</Modal.Body>
-                <Modal.Footer>
-                  <Button variant="secondary" onClick={handleClose}>
-                    Close
-                  </Button>
-                  <Button variant="primary" onClick={handleClose}>
-                    Save Changes
-                  </Button>
-                </Modal.Footer>
-              </Modal>
             </Summary>
           </Bottom>
         </Wrapper>
