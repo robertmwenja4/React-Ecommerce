@@ -7,7 +7,9 @@
   import styled from 'styled-components';
   import { useSelector } from 'react-redux';
 import axios, { Axios } from 'axios';
-import { Modal } from 'react-bootstrap';
+import Button from 'react-bootstrap/Button';
+import Modal from 'react-bootstrap/Modal';
+
 import 'bootstrap/dist/css/bootstrap.min.css';
 
   const Container = styled.div``;
@@ -150,7 +152,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
   const SummaryItemPrice = styled.span``;
 
-  const Button = styled.button`
+  const button = styled.button`
     width: 100%;
     padding: 10px;
     background-color: black;
@@ -158,6 +160,12 @@ import 'bootstrap/dist/css/bootstrap.min.css';
     font-weight: 600;
     cursor: pointer;
   `;
+  const Input = styled.input`
+  flex: 1;
+  min-width: 40%;
+  margin: 10px 0;
+  padding: 10px;
+`;
 
   const Cart = () => {
     const cart = useSelector(state => state.cart);
@@ -226,19 +234,34 @@ import 'bootstrap/dist/css/bootstrap.min.css';
                 <SummaryItemText>Subtotal</SummaryItemText>
                 <SummaryItemPrice>Ksh {cart.total}</SummaryItemPrice>
               </SummaryItem>
-              <SummaryItem>
-                <SummaryItemText>Estimated Shipping</SummaryItemText>
-                <SummaryItemPrice>Ksh 5.90</SummaryItemPrice>
-              </SummaryItem>
-              <SummaryItem>
-                <SummaryItemText>Shipping Discount</SummaryItemText>
-                <SummaryItemPrice>Ksh -5.90</SummaryItemPrice>
-              </SummaryItem>
               <SummaryItem type="total">
                 <SummaryItemText>Total</SummaryItemText>
                 <SummaryItemPrice>Ksh {cart.total}</SummaryItemPrice>
               </SummaryItem>
-              <Button onClick={handleMpesa}>CHECKOUT NOW</Button>
+              {/* <button onClick={handleMpesa}>CHECKOUT NOW</button> */}
+              <SummaryItem>
+              <Button variant="primary" onClick={handleShow}>
+                CHECKOUT NOW
+              </Button>
+
+              <Modal show={show} onHide={handleClose}>
+                <Modal.Header closeButton>
+                  <Modal.Title>PAYMENT INFORMATION</Modal.Title>
+                </Modal.Header>
+                <Modal.Body>
+                <Input placeholder="Amount" value={cart.total} readOnly/>
+                <Input placeholder="Phone Number" />
+                </Modal.Body>
+                <Modal.Footer>
+                  <Button variant="secondary" onClick={handleClose}>
+                    Close
+                  </Button>
+                  <Button variant="primary" onClick={handleClose}>
+                    PAY
+                  </Button>
+                </Modal.Footer>
+              </Modal>
+              </SummaryItem>
             </Summary>
           </Bottom>
         </Wrapper>
