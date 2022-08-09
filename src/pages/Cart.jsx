@@ -169,18 +169,19 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
   const Cart = () => {
     const cart = useSelector(state => state.cart);
+    let phoneNumber = "254719189576";
     const [show, setShow] = useState(false);
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
     console.log(cart);
     const handleMpesa =  (e) => {
       e.preventDefault();
-      let phoneNumber = "254719189576";
         axios.get('http://localhost:5000/api/mpesa/stk',{
           Amount: "1",
-          PhoneNumber: "254725207763"
+          PhoneNumber: phoneNumber
         }).then((res) =>console.log(res.data))
         .catch((err) => console.log(err))
+        handleClose();
     }
 
     return (
@@ -250,13 +251,13 @@ import 'bootstrap/dist/css/bootstrap.min.css';
                 </Modal.Header>
                 <Modal.Body>
                 <Input placeholder="Amount" value={cart.total} readOnly/>
-                <Input placeholder="Phone Number" />
+                <Input placeholder="Phone Number" value={phoneNumber}/>
                 </Modal.Body>
                 <Modal.Footer>
                   <Button variant="secondary" onClick={handleClose}>
                     Close
                   </Button>
-                  <Button variant="primary" onClick={handleClose}>
+                  <Button variant="primary" onClick={handleMpesa}>
                     PAY
                   </Button>
                 </Modal.Footer>
