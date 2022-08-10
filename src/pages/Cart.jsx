@@ -1,15 +1,15 @@
-  import React, { useState } from 'react'
-  import { Add, Remove } from "@material-ui/icons";
-  import Announcement from "../components/Announcement";
-  import Footer from "../components/Footer";
-  import Navbar from "../components/NavBar";
-  import { mobile } from "../responsive";
-  import styled from 'styled-components';
-  import { useSelector } from 'react-redux';
+import React, { useState } from 'react'
+import { Add, Remove } from "@material-ui/icons";
+import Announcement from "../components/Announcement";
+import Footer from "../components/Footer";
+import Navbar from "../components/NavBar";
+import { mobile } from "../responsive";
+import styled from 'styled-components';
+import { useSelector } from 'react-redux';
 import axios, { Axios } from 'axios';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
-
+import CircularProgress from '@material/circular-progress';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
   const Container = styled.div``;
@@ -169,19 +169,20 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
   const Cart = () => {
     const cart = useSelector(state => state.cart);
-    let phoneNumber = "254719189576";
+    let phoneNumber = 254719189576;
     const [show, setShow] = useState(false);
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
     console.log(cart);
     const handleMpesa =  (e) => {
       e.preventDefault();
-        axios.get('http://localhost:5000/api/mpesa/stk',{
+        axios.get('http://81e2-154-123-81-131.ngrok.io/api/mpesa/stk',{
           Amount: "1",
           PhoneNumber: phoneNumber
         }).then((res) =>console.log(res.data))
         .catch((err) => console.log(err))
         handleClose();
+          <CircularProgress />
     }
 
     return (
