@@ -9,7 +9,6 @@ import { useSelector } from 'react-redux';
 import axios, { Axios } from 'axios';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
-import CircularProgress from '@material/circular-progress';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
   const Container = styled.div``;
@@ -182,7 +181,6 @@ import 'bootstrap/dist/css/bootstrap.min.css';
         }).then((res) =>console.log(res.data))
         .catch((err) => console.log(err))
         handleClose();
-          <CircularProgress />
     }
 
     return (
