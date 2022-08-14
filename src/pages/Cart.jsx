@@ -250,7 +250,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
                 </Modal.Header>
                 <Modal.Body>
                 <Input placeholder="Amount" value={cart.total} readOnly/>
-                <Input placeholder="Phone Number" value={phoneNumber}/>
+                <Input placeholder="Phone Number" required value={phoneNumber}/>
                 </Modal.Body>
                 <Modal.Footer>
                   <Button variant="secondary" onClick={handleClose}>
