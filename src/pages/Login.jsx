@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import styled from 'styled-components';
 import { mobile } from '../responsive';
 import { Link } from 'react-router-dom';
@@ -62,14 +62,16 @@ const link = styled.a`
 
 
 const Login = () => {
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
   return (
     
     <Container>
       <Wrapper>
         <Title>SIGN IN</Title>
         <Form>
-          <Input placeholder="username" />
-          <Input placeholder="password" />
+          <Input placeholder="username" onChange={(e)=>setUsername(e.target.value)}/>
+          <Input placeholder="password" onChange={(e)=>setPassword(e.target.value)}/>
           <Button>LOGIN</Button>
           <Link to="Register">DO NOT YOU REMEMBER THE PASSWORD?</Link>
           <Link to="Register">CREATE A NEW ACCOUNT</Link>
